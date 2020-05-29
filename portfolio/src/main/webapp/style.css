@@ -1,32 +1,88 @@
+
+.row {  
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
 #content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
+  background-color: #ffffff;
+  padding: 50px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  font-family: Arial, Helvetica, sans-serif;
+  animation-name: initAnim2;
+  animation-duration: 3s;
+  position: relative;
+  
 }
 
 #greeting-container {
   margin-top: 20px;
 }
-
-.sidenav {
-  height: 100%;
-  width: 200px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(49, 49, 153);
-  overflow-x: hidden;
-  padding-top: 20px;
+body{
+  background-image: url('https://c0.wallpaperflare.com/preview/550/3/653/clouds-color-colour-cottoncandy.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
-.sidenav a {
-  padding: 6px 6px 6px 32px;
+
+.topnav {
+  display: flex;
+  overflow: hidden;
+  background-color: #333;
+  animation-name: navBarAnim;
+  animation-duration: 3s;
+  position: relative;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
   font-size: 25px;
-  color: #ffffff;
-  display: block;
 }
 
-.sidenav a:hover {
-  color: #f1f1f1;
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+@keyframes initAnim{
+  0%   { top:100vh; }
+  100% { top:0px;}
+}
+
+
+@keyframes initAnim2{
+  0%   {left:100vw;}
+  100%  {left: 0vw;}
+}
+
+@keyframes navBarAnim{
+  0%   {right:100vw;}
+  100%  {right: 0vw;}
+}
+
+#imageGallery{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+  padding: 50px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  animation-name: initAnim;
+  animation-duration: 3s;
+  position: relative;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 10px;
 }
