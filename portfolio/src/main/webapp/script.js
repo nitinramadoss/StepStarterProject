@@ -26,3 +26,16 @@ function addRandomGreeting() {
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
 }
+
+//global var
+var currentId = 'about';
+
+function tabPressed(nextId){
+   document.getElementById(currentId).style.display = "none";
+   document.getElementById(nextId).style.display = "block";
+   currentId = nextId;
+}
+
+
+
+

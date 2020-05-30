@@ -12,11 +12,10 @@
 
   <body>  
       <div id="mySidenav" class="topnav">
-            <a href="javascript:void(0)"</a>
-            <a href="#About">About</a>
-            <a href="#Projects">Projects</a>
-            <a href="#Contact">Contact</a>
-            <a href="#Goals">Goals</a>
+            <a href="javascript:tabPressed('about')">About</a>
+            <a href="javascript:tabPressed('projects')">Projects</a>
+            <a href="javascript:tabPressed('contact')">Contact</a>
+            <a href="javascript:tabPressed('goals')">Goals</a>
             </div>
             
     <div class="row">
@@ -25,11 +24,41 @@
       <h1>Nitin's Portfolio</h1>
       <hr style="height:1px;border-top:1px solid #0000FF" />
       <img src="images/profile.jpg" alt="Profile Photograph">
+      <div id="about">
       <h3>University of Florida Bachelors in Computer Science</h3>
       <h3>Google STEP Intern</h3>
       <p>
           I have been learning how to program for roughly 6 years now. I began with learning web development for an FBLA competition and I now build android applications for national competitions like PennApps and for my personal developer account on the Play Store. Software development is one of my favorite subfields in computer science. Throughout my junior and senior year in high school, I taught students how to program in a computer science club that I founder. My goal is to lead emerging technologies and build software that can make a postive impact in society.
       </p>
+      </div>
+      <div id="projects" style = "display:none";>
+        <h2>Projects:</h2>
+        <ul>
+            <li>Club king Apps mobile app</li>
+            <li>PictoPill application - integrates ArCore and FireBase Vision </li>
+            <li>Tap Media - share social media contacts by tapping phones</li>
+            <li>FBLA Quiz Time app available on the Play Store</li>
+            <li>First app I ever built: Pocket Popular available on Play Store</li>
+        </ul>
+    </div>
+    <div id="contact" style = "display:none";>
+        <h2>Contact </h2>
+        <ul>
+            <li>Instagram: nitin_r_01</li>
+            <li>Snapchat: nitinlikesfood</li>
+            <li>Discord: Nitin Ramadoss</li>
+            <li>Email: nitinramadoss@gmail.com</li>
+        </ul>
+    </div>
+    <div id="goals" style = "display:none";>
+        <h2>Goals </h2>
+        <ul>
+            <li>Lead emergin technologies</li>
+            <li>Learn various fields in computer science such as AI/ML,Computer Vision, Networking, and Data science</li>
+            <li>Practice tennis so I can play competitively</li>
+            <li>Improve my drum skills so I can play for more concerts</li>
+        </ul>
+    </div>
       <hr style="border-top: dotted 1px;" />
       <h4>Extra Links</h4>
       <a href="https://www.linkedin.com/in/nitin-r-b8aaa4107/">Connect with me on Linkedin!</a>
@@ -39,20 +68,19 @@
       <button onclick="addRandomGreeting()">Hello</button>
       <div id="greeting-container"></div>
     </div>
-
+    
     <div id="imageGallery">
         <div class="grid">
         <h1>Image Gallery</h1>
         <br>
-        <img src="images/ig1.jpg" alt="Profile Photograph"  height="600px" width="800px">
-        <img src="images/ig2.jpg" alt="Profile Photograph"  height="600px" width="800px">
-        <img src="images/ig3.jpg" alt="Profile Photograph"  height="600px" width="800px"> 
+        <img src="images/ig1.jpg" alt="Profile Photograph"  height="600px" width="700px">
+        <img src="images/ig2.jpg" alt="Profile Photograph"  height="600px" width="700px">
+        <img src="images/ig3.jpg" alt="Profile Photograph"  height="600px" width="700px"> 
         <img src="images/ig4.jpg" alt="Profile Photograph"  height="600px" width="800px">
-        <img src="images/ig5.jpg" alt="Profile Photograph"  height="600px" width="800px">
+        <img src="images/ig1.jpg" alt="Profile Photograph"  height="600px" width="700px">
         <img src="images/ig6.jpg" alt="Profile Photograph"  height="600px" width="800px">
         </div>
     </div>
-
     </div>
   </body>
 </html>
