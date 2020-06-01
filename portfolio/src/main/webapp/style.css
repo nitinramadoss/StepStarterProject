@@ -8,6 +8,11 @@ html {
   flex-direction: column;
 }
 
+a{
+    font-family:Courier New; 
+    font-size: large;
+}
+
 #content {
   color: #ffffff;
   height: 75vh;
@@ -31,10 +36,6 @@ html {
   float:right;
 }
 
-#about{
-  font-family: Raleway; 
-  font-size: large; 
-}
 #greeting-container {
   margin-top: 20px;
 }
@@ -51,6 +52,7 @@ p{
 li{
    font-family:Courier New; 
    color: #ffffff;
+   font-size: x-large; 
 }
 
 .topnav {
@@ -107,10 +109,13 @@ li{
   animation-duration: 3s;
   position: relative;
 }
+#about{
+    color: #000000;
+    font-family:Courier New;
+    font-size: x-large; 
+}
 
 #projectsPanel{
-  font-size: x-large; 
-  color: #ffffff;
   display: flex;
   flex-wrap: wrap;
   height: 100vh;
@@ -127,6 +132,9 @@ li{
 
 #projects{
   margin-left:40vw;
+  color: #ffffff;
+  font-size: x-large;
+  font-family:Courier New;
 }
 
 #contactsPanel{
@@ -146,11 +154,10 @@ li{
     margin: 0 auto;
     margin-top: 10vh;
     color: #000000;
+    font-family:Courier New;
 }
 
 #goalsPanel{
-  font-size: x-large; 
-  color: #ffffff;
   display: flex;
   flex-wrap: wrap;
   height: 75vh;
@@ -165,6 +172,11 @@ li{
   position: relative;
 }
 
+#goals{
+  color: #ffffff;
+  font-size: x-large;
+  font-family:Courier New;
+}
 
 .grid {
   display: grid;
