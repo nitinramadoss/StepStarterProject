@@ -6,9 +6,13 @@
 }
 
 #content {
-  background-color: #ffffff;
+  color: #ffffff;
+  height: 75vh;
+  background-image: url('images/bghome.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; 
   padding: 50px;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
   font-family: Arial, Helvetica, sans-serif;
   animation-name: initAnim2;
   animation-duration: 3s;
@@ -16,15 +20,19 @@
   
 }
 
+#about{
+  font-size: x-large;
+  margin-top: 55vh;
+  margin-bottom: 30vh;
+  float:right;
+}
 #greeting-container {
   margin-top: 20px;
 }
 body{
-  background-image: url('https://c0.wallpaperflare.com/preview/550/3/653/clouds-color-colour-cottoncandy.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+  background-color: #000000;
 }
+
 
 .topnav {
   display: flex;
