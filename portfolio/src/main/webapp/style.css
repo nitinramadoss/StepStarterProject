@@ -28,6 +28,17 @@ a{
   
 }
 
+#line-one{
+    height:1px;
+    border-top:1px;
+    border-color: solid #0000FF;
+}
+
+#line-two{
+    border-top: dotted 1px;
+    border-color: solid #0000FF;
+}
+
 #title{
   font-size: x-large;
   margin-top: 55vh;
@@ -36,7 +47,7 @@ a{
   float:right;
 }
 
-#dynamicDescription{
+#dynamic-description{
   font-size: x-large;
   font-family:Courier New;
   float:right;
@@ -108,7 +119,7 @@ li{
   100%  {right: 0vw;}
 }
 
-#aboutPanel{
+#about-panel{
   display: flex;
   flex-wrap: wrap;
   background-color: #ffffff;
@@ -124,7 +135,7 @@ li{
     font-size: x-large; 
 }
 
-#projectsPanel{
+#projects-panel{
   display: flex;
   flex-wrap: wrap;
   height: 100vh;
@@ -146,7 +157,7 @@ li{
   font-family:Courier New;
 }
 
-#contactsPanel{
+#contacts-panel{
   font-size: x-large; 
   display: flex;
   flex-wrap: wrap;
@@ -166,7 +177,7 @@ li{
     font-family:Courier New;
 }
 
-#goalsPanel{
+#goals-panel{
   display: flex;
   flex-wrap: wrap;
   height: 75vh;
