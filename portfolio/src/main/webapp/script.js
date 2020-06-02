@@ -13,7 +13,11 @@
 // limitations under the License.
 
 
-
+async function getPhrase() {
+  const response = await fetch('/data');
+  const phrase = await response.text();
+  document.getElementById('dynamicDescription').innerText = phrase;
+}
 
 
 

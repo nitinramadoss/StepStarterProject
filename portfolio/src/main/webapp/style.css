@@ -36,6 +36,15 @@ a{
   float:right;
 }
 
+#dynamicDescription{
+  font-size: x-large;
+  font-family:Courier New;
+  float:right;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+  padding: 16px;
+}
+
 #greeting-container {
   margin-top: 20px;
 }
