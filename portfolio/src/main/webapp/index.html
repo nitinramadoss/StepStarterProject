@@ -7,10 +7,7 @@
     <script src="script.js"></script>
   </head>
 
- 
- 
-
-  <body>  
+  <body onload = "getPhrase()">  
       <div id="mySidenav" class="topnav">
             <a href="#aboutPanel">About</a>
             <a href="#projectsPanel">Projects</a>
@@ -21,6 +18,11 @@
     <div class="row">
 
      <div id="content">
+
+      <div id = "dynamicDescription">
+          <!--content decided by script.js and DataServlet.java -->
+      </div>
+
       <div id="title">
       <h1>Nitin Ramadoss</h1>
       <h3>University of Florida BS in CS</h3>
@@ -32,7 +34,7 @@
     <div id="aboutPanel">
         <div id="about">
         <h2> About Me </h2>
-        <hr style="height:1px;border-top:1px solid #0000FF" />
+        <hr>
         <br>
         <img src = "images/profile.jpg" alt = "Profile Image">
         <br>
@@ -49,7 +51,7 @@
           writing poems for contests and works in my spare time.
         </p>
         <br>
-        <hr style="border-top: dotted 1px;" />
+        <hr>
         <a href="https://www.linkedin.com/in/nitin-r-b8aaa4107/">Connect with me on Linkedin!</a>
         <br>
         <a href="https://github.com/nitinramadoss">Checkout my work on GitHub!</a> 
@@ -90,8 +92,6 @@
         </ul>
        </div>
     </div>
-
-
     </div>
     </div>
   </body>
