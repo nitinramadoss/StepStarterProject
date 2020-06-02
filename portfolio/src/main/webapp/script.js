@@ -14,10 +14,12 @@
 
 
 async function getPhrase() {
-  const response = await fetch('/data');
-  const phrase = await response.text();
-  document.getElementById('dynamicDescription').innerText = phrase;
+  let response = await fetch('/data');
+  let phrase = await response.text();
+  document.getElementById('dynamic-description').innerText = phrase;
 }
+
+
 
 
 
