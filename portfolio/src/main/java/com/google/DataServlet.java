@@ -35,9 +35,21 @@ public class DataServlet extends HttpServlet {
     phrases.add("Student");
     phrases.add("Visionary");
   }
-  @Override
+
+   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String randomPhrase = phrases.get((int) (Math.random() * phrases.size()));  
-    response.setContentType("text/html;");
-    response.getWriter().println(randomPhrase);
+    //String randomPhrase = phrases.get((int) (Math.random() * phrases.size()));  
+    //response.setContentType("text/html;");
+ 
+    String json = convertToJsonUsingGson(phrases);
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
+  }
+ 
+  private String convertToJsonUsingGson(List<String> comments) {
+    Gson gson = new Gson();
+    String json = gson.toJson(comments);
+    return json;
+  }
+
 }

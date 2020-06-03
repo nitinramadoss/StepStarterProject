@@ -13,11 +13,18 @@
 // limitations under the License.
 
 
-async function getPhrase() {
-  let response = await fetch('/data');
-  let phrase = await response.text();
-  document.getElementById('dynamic-description').innerText = phrase;
+// async function getPhrase() {
+//   let response = await fetch('/data');
+//   let phrase = await response.text();
+//   document.getElementById('dynamic-description').innerText = phrase;
+// }
+
+function getPhrase(){
+    fetch('data').then((response) => response.json()).then((list) => {
+        document.getElementById('dynamic-description').innerText = list;
+    });
 }
+
 
 
 
