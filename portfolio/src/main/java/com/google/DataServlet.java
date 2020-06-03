@@ -25,7 +25,9 @@ import javax.servlet.http.HttpServletResponse;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data") 
 public class DataServlet extends HttpServlet {
+
   private List<String> phrases;
+
    @Override
   public void init() {
     phrases = new ArrayList<String>();
@@ -35,9 +37,18 @@ public class DataServlet extends HttpServlet {
     phrases.add("Student");
     phrases.add("Visionary");
   }
-  @Override
+
+   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String randomPhrase = phrases.get((int) (Math.random() * phrases.size()));  
-    response.setContentType("text/html;");
-    response.getWriter().println(randomPhrase);
+    String json = convertToJsonUsingGson(phrases);
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
+  }
+ 
+  private String convertToJsonUsingGson(List<String> comments) {
+    Gson gson = new Gson();
+    String json = gson.toJson(comments);
+    return json;
+  }
+
 }
