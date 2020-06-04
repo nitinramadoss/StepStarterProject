@@ -28,19 +28,19 @@ public class DataServlet extends HttpServlet
 { 
   private List<String> comments;
 
-   @Override
+  @Override
   public void init() {
     comments = new ArrayList<String>();
   }
 
-   @Override
+  @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String json = convertToJson(comments);
     response.setContentType("application/json;");
     response.getWriter().println(json);
   }
 
-   @Override
+  @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String message = request.getParameter("user-comment");
     if (message != null || message.length() != 0){
