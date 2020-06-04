@@ -35,7 +35,7 @@ public class DataServlet extends HttpServlet
 
    @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String json = convertToJsonUsingGson(comments);
+    String json = convertToJson(comments);
     response.setContentType("application/json;");
     response.getWriter().println(json);
   }
@@ -43,13 +43,13 @@ public class DataServlet extends HttpServlet
    @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String message = request.getParameter("user-comment");
-    if(message == null || message.length() != 0){
+    if (message != null || message.length() != 0){
         comments.add(message);
     }
     response.sendRedirect("/index.html#comments-panel");
   }
  
-  private String convertToJsonUsingGson(List<String> content) {
+  private String convertToJson(List<String> content) {
     Gson gson = new Gson();
     String json = gson.toJson(content);
     return json;
