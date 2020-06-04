@@ -12,15 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-function getPhrase(){
-    fetch('data').then((response) => response.json()).then((list) => {
-        document.getElementById('dynamic-description').innerText = list;
-    });
+async function getPhrase(){
+    let response = await fetch('/data');
+    let list = await response.json();
+    if(list.length != 0){
+        for(i = 0; i < list.length; i++){
+            let commentSection = document.createElement("DIV");
+            commentSection.setAttribute("id", "dynamic-history");
+            let addComment = document.createTextNode(list[i]);
+            commentSection.appendChild(addComment);  
+            document.getElementById("section").appendChild(commentSection);
+        }
+    }
 }
-
-
-
-
-
-
-
+  
+         
