@@ -24,30 +24,34 @@ import javax.servlet.http.HttpServletResponse;
  
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data") 
-public class DataServlet extends HttpServlet {
+public class DataServlet extends HttpServlet 
+{ 
+  private List<String> comments;
 
-  private List<String> phrases;
-
-   @Override
+  @Override
   public void init() {
-    phrases = new ArrayList<String>();
-    phrases.add("Writer");
-    phrases.add("Achiever");
-    phrases.add("Engineer");
-    phrases.add("Student");
-    phrases.add("Visionary");
+    comments = new ArrayList<String>();
   }
 
-   @Override
+  @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String json = convertToJsonUsingGson(phrases);
+    String json = convertToJson(comments);
     response.setContentType("application/json;");
     response.getWriter().println(json);
   }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String message = request.getParameter("user-comment");
+    if (message != null || message.length() != 0){
+        comments.add(message);
+    }
+    response.sendRedirect("/index.html#comments-panel");
+  }
  
-  private String convertToJsonUsingGson(List<String> comments) {
+  private String convertToJson(List<String> content) {
     Gson gson = new Gson();
-    String json = gson.toJson(comments);
+    String json = gson.toJson(content);
     return json;
   }
 

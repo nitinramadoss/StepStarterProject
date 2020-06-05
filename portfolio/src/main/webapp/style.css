@@ -2,11 +2,12 @@ html {
   scroll-behavior: smooth;
 }
 
-.row {  
+.column {  
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
 }
+
 
 a{
     font-family: Courier New; 
@@ -47,26 +48,18 @@ a{
   float: right;
 }
 
-#dynamic-description{
-  font-size: x-large;
-  font-family: Courier New;
-  float: right;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 16px;
-  padding: 16px;
-}
-
 #greeting-container {
   margin-top: 20px;
 }
+
 body{
   background-color: #000000;
 }
 
-
 p{
     font-family: Courier New; 
     font-size: large;
+    color: #000000;
 }
 
 hr{
@@ -203,8 +196,56 @@ li{
   font-family: Courier New;
 }
 
+#comments-panel{
+  display: flex;
+  flex-wrap: wrap;
+  height: 75vh;
+  background-color: #ffffff;
+  padding: 50px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  animation-name: initAnim;
+  animation-duration: 3s;
+  position: relative;
+}
+
+#comments{
+  color: #000000;
+  font-size: large;
+  font-family: Courier New;
+}
+
+#dynamic-history{
+    margin-top: 0px;
+    width: 100vw;
+    margin-right: 10vw;
+    border-style: solid;
+    padding: 50px;
+}
+
+
+label{
+    font-size:large;
+    color: #000000;
+    font-family: Courier New;
+}
+
+#submit-button{
+    background-color: #ffffff;
+    padding: 25px;
+    color: #386daa;
+    font-family: Courier New;
+    border-style: solid; 
+    border-color: #386daa; 
+}
+
+#submit-button:hover{
+    background-color: #386daa;
+    color: #ffffff;
+}
+
 .grid {
   display: grid;
   grid-template-columns: auto auto;
   padding: 10px;
 }
+

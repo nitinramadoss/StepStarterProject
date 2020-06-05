@@ -15,12 +15,8 @@
             <a href="#goals-panel">Goals</a>
        </div>
             
-    <div class="row">
+    <div class="column">
      <div id="content">
-      <div id = "dynamic-description">
-          <!--content decided by script.js and DataServlet.java -->
-      </div>
-
       <div id="title">
       <h1>Nitin Ramadoss</h1>
       <h3>University of Florida BS in CS</h3>
@@ -92,6 +88,24 @@
             <li>Practice tennis so I can play competitively</li>
             <li>Improve my drum skills so I can play for more concerts</li>
         </ul>
+       </div>
+    </div>
+
+     <div id="comments-panel">
+       <div id="comments">
+        <h2>Comments</h2>
+             <form action="/data" method="POST">
+             <label for="user-name">Name:</label>
+             <input type="text" name="user-name" size = "50">
+             <br>
+             <br>
+             <label for="user-comment">Leave a comment:</label>
+             <input type="text" name="user-comment" size = "50">
+             <br>
+             <br>
+             <input type="submit" id = "submit-button" />
+             </form>
+        <ul id = "section"></ul>
        </div>
     </div>
     </div>
