@@ -14,7 +14,7 @@
 
 package com.google.sps.data;
 
-public class User
+public class User //this object represents each comment posted to the website {Name: Comment}
 {
     private long id;
     private String name;
