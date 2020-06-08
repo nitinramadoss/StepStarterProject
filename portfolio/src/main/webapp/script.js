@@ -15,7 +15,7 @@
 async function getPhrase(){
     let response = await fetch('/load-data');
     let list = await response.json();
-    if(list.length != 0){
+ 
         for(i = 0; i < list.length; i++){
             let commentSection = document.createElement("DIV");
             commentSection.setAttribute("id", "dynamic-history");
@@ -25,7 +25,6 @@ async function getPhrase(){
             commentSection.appendChild(addMessage);  
             document.getElementById("section").appendChild(commentSection);
         }
-    }
 }
   
          
