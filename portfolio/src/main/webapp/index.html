@@ -103,7 +103,14 @@
              <input type="text" name="user-comment" size = "50">
              <br>
              <br>
+             <label for="max-comments">Show Comments: (between 1 and 5):</label>
+             <input type="number" id="max-comments" min="1" max="5" onchange="getPhrase()" value = "2">
+             <br>
+             <br>     
              <input type="submit" id = "submit-button" />
+             <br>
+             <br>
+             <button type="button" onclick="removePhrase()">Clear Comments</button>
              </form>
         <ul id = "section"></ul>
        </div>
