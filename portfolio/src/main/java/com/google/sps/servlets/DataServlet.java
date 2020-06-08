@@ -30,17 +30,19 @@ public class DataServlet extends HttpServlet
 { 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     String name = request.getParameter("user-name");
     String message = request.getParameter("user-comment");
     long timestamp = System.currentTimeMillis();
 
-    Entity taskEntity = new Entity("User");
-    taskEntity.setProperty("name", name);
-    taskEntity.setProperty("message", message);
-    taskEntity.setProperty("timestamp", timestamp);
+    if(name.length() != 0 && message.length() != 0){
+        Entity taskEntity = new Entity("Comment");
+        taskEntity.setProperty("name", name);
+        taskEntity.setProperty("message", message);
+        taskEntity.setProperty("timestamp", timestamp);
+        datastore.put(taskEntity);
+    }
 
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.put(taskEntity);
     response.sendRedirect("/index.html#comments-panel");
   }
 }

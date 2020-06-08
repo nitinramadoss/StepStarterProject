@@ -16,11 +16,12 @@ package com.google.sps.servlets;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.gson.Gson;
-import com.google.sps.data.User;
+import com.google.sps.data.Comment;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,22 +36,23 @@ public class LoadDataServlet extends HttpServlet
 { 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    List<User> users = new ArrayList<User>();
-    Query query = new Query("User").addSort("timestamp", SortDirection.DESCENDING);
+    List<Comment> comments = new ArrayList<Comment>();
+    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    PreparedQuery results = datastore.prepare(query);
+    String maxEntities = request.getParameter("numCommentsDisplay");
+    List<Entity> results = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(Integer.parseInt(maxEntities)));
 
-    for (Entity e : results.asIterable()) {
+    for (Entity e : results) {
         long id = (long) e.getKey().getId();
         String name = (String) e.getProperty("name");
         String message = (String) e.getProperty("message");
-
-        users.add(new User(id, name, message));
+        comments.add(new Comment(id, name, message));
     }
 
     Gson gson = new Gson();
 
     response.setContentType("application/json;");
-    response.getWriter().println(gson.toJson(users));
+    response.getWriter().println(gson.toJson(comments));
   }
 }
+
