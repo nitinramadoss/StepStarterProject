@@ -22,11 +22,11 @@ async function getPhrase(){
         commentHistory.removeChild(commentHistory.childNodes[0]);
     }
 
-    for(i = 0; i < list.length; i++){
+    for(const element of list){
         let commentSection = document.createElement("DIV");
         commentSection.setAttribute("id", "dynamic-history");
-        let addName = document.createTextNode(list[i].name + ": ");
-        let addMessage = document.createTextNode(list[i].message);
+        let addName = document.createTextNode(element.name + ": ");
+        let addMessage = document.createTextNode(element.message);
         commentSection.appendChild(addName);  
         commentSection.appendChild(addMessage);  
         document.getElementById("section").appendChild(commentSection);
@@ -38,4 +38,4 @@ async function removePhrase(){
     getPhrase();
 }
   
-    
+
