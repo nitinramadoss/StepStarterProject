@@ -18,9 +18,7 @@ async function getPhrase(){
     let list = await response.json(); //list of entities from datastore
     let commentHistory = document.getElementById("section"); //UI for displaying comments
 
-    while (commentHistory.hasChildNodes()) {
-        commentHistory.removeChild(commentHistory.childNodes[0]);
-    }
+    commentHistory.innerHTML = '';
 
     for(const element of list){
         let commentSection = document.createElement("DIV");
