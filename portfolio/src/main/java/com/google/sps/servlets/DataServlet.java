@@ -13,7 +13,9 @@
 // limitations under the License.
  
 package com.google.sps.servlets;
-import com.google.gson.Gson;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +24,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
  
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
+/** Servlet that adds comments to datastore */
 @WebServlet("/data") 
 public class DataServlet extends HttpServlet 
 { 
+<<<<<<< HEAD:portfolio/src/main/java/com/google/sps/servlets/DataServlet.java
+=======
   private List<String> comments;
 
   @Override
@@ -40,19 +44,22 @@ public class DataServlet extends HttpServlet
     response.getWriter().println(json);
   }
 
+>>>>>>> master:portfolio/src/main/java/com/google/DataServlet.java
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    String name = request.getParameter("user-name");
     String message = request.getParameter("user-comment");
-    if (message != null || message.length() != 0){
-        comments.add(message);
+    long timestamp = System.currentTimeMillis();
+
+    if(name.length() != 0 && message.length() != 0){
+        Entity taskEntity = new Entity("Comment");
+        taskEntity.setProperty("name", name);
+        taskEntity.setProperty("message", message);
+        taskEntity.setProperty("timestamp", timestamp);
+        datastore.put(taskEntity);
     }
+
     response.sendRedirect("/index.html#comments-panel");
   }
- 
-  private String convertToJson(List<String> content) {
-    Gson gson = new Gson();
-    String json = gson.toJson(content);
-    return json;
-  }
-
 }

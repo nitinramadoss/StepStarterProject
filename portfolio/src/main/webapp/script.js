@@ -13,17 +13,18 @@
 // limitations under the License.
 
 async function getPhrase(){
-    let response = await fetch('/data');
+    let response = await fetch('/load-data');
     let list = await response.json();
-    if(list.length != 0){
+ 
         for(i = 0; i < list.length; i++){
             let commentSection = document.createElement("DIV");
             commentSection.setAttribute("id", "dynamic-history");
-            let addComment = document.createTextNode(list[i]);
-            commentSection.appendChild(addComment);  
+            let addName = document.createTextNode(list[i].name + ": ");
+            let addMessage = document.createTextNode(list[i].message);
+            commentSection.appendChild(addName);  
+            commentSection.appendChild(addMessage);  
             document.getElementById("section").appendChild(commentSection);
         }
-    }
 }
   
          
