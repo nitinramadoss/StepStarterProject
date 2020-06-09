@@ -15,8 +15,8 @@
 async function getPhrase(){
     let max = document.getElementById("max-comments").value;
     let response = await fetch('/load-data?numCommentsDisplay=' + max);
-    let list = await response.json();//list of entities from datastore
-    let commentHistory = document.getElementById("section");//UI for displaying comments
+    let list = await response.json(); //list of entities from datastore
+    let commentHistory = document.getElementById("section"); //UI for displaying comments
 
     while (commentHistory.hasChildNodes()) {
         commentHistory.removeChild(commentHistory.childNodes[0]);
@@ -30,8 +30,7 @@ async function getPhrase(){
         commentSection.appendChild(addName);  
         commentSection.appendChild(addMessage);  
         document.getElementById("section").appendChild(commentSection);
-    }
-    
+    }    
 }
 
 async function removePhrase(){
@@ -39,4 +38,4 @@ async function removePhrase(){
     getPhrase();
 }
   
-         
+    
