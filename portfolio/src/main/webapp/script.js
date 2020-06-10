@@ -20,7 +20,7 @@ async function getPhrase(){
 
     commentHistory.innerHTML = '';
 
-    for(cont element of list){
+    for(const element of list){
         let commentSection = document.createElement("DIV");
         commentSection.setAttribute("id", "dynamic-history");
         let addName = document.createTextNode(element.name + ": ");
