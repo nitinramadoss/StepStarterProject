@@ -27,9 +27,9 @@
     <div id="about-panel">
         <div id="about">
         <h2> About Me </h2>
-        <hr id = "line-one">
+        <hr id="line-one">
         <br>
-        <img src = "images/profile.jpg" alt = "Profile Image">
+        <img src="images/profile.jpg" alt="Profile Image">
         <br>
         <p>
           I have been learning how to program for roughly 6 years now.
@@ -96,25 +96,33 @@
         <h2>Comments</h2>
              <form action="/data" method="POST">
              <label for="user-name">Name:</label>
-             <input type="text" name="user-name" size = "50">
+             <input type="text" name="user-name" size="50">
              <br>
              <br>
              <label for="user-comment">Leave a comment:</label>
-             <input type="text" name="user-comment" size = "50">
+             <input type="text" name="user-comment" size="50">
              <br>
              <br>
              <label for="max-comments">Show Comments: (between 1 and 5):</label>
-             <input type="number" id="max-comments" min="1" max="5" onchange="getPhrase()" value = "2">
+             <input type="number" id="max-comments" min="1" max="5" onchange="getPhrase()" value ="2">
              <br>
              <br>     
-             <input type="submit" id = "submit-button" />
+             <input type="submit" id="submit-button" />
              <br>
              <br>
              <button type="button" onclick="removePhrase()">Clear Comments</button>
              </form>
-        <ul id = "section"></ul>
+        <ul id="section"></ul>
        </div>
     </div>
+
+     <script src="https://www.gstatic.com/charts/loader.js"></script>
+        <script>
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(loadChart);
+        </script>
+
+        <div id="activityPieChart"/>
     </div>
     </div>
   </body>

@@ -35,5 +35,21 @@ async function removePhrase(){
     let response = await fetch('/delete-data',  {method:'post'});
     getPhrase();
 }
+
+function loadChart(){
+    let stats = new google.visualization.DataTable();
+      stats.addColumn('string', 'Action');
+      stats.addColumn('number', 'Percentage');
+      stats.addRows([
+        ['Programming', 0.65],
+        ['Biking', 0.10],
+        ['Gaming', 0.25]
+      ]);
+
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.PieChart(document.getElementById('activityPieChart'));
+      chart.draw(stats, null);
+}
+  
   
 
