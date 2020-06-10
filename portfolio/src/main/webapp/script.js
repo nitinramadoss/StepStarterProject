@@ -13,18 +13,27 @@
 // limitations under the License.
 
 async function getPhrase(){
-    let response = await fetch('/load-data');
-    let list = await response.json();
- 
-        for(i = 0; i < list.length; i++){
-            let commentSection = document.createElement("DIV");
-            commentSection.setAttribute("id", "dynamic-history");
-            let addName = document.createTextNode(list[i].name + ": ");
-            let addMessage = document.createTextNode(list[i].message);
-            commentSection.appendChild(addName);  
-            commentSection.appendChild(addMessage);  
-            document.getElementById("section").appendChild(commentSection);
-        }
+    let max = document.getElementById("max-comments").value;
+    let response = await fetch('/load-data?numCommentsDisplay=' + max);
+    let list = await response.json(); //list of entities from datastore
+    let commentHistory = document.getElementById("section"); //UI for displaying comments
+
+    commentHistory.innerHTML = '';
+
+    for(const element of list){
+        let commentSection = document.createElement("DIV");
+        commentSection.setAttribute("id", "dynamic-history");
+        let addName = document.createTextNode(element.name + ": ");
+        let addMessage = document.createTextNode(element.message);
+        commentSection.appendChild(addName);  
+        commentSection.appendChild(addMessage);  
+        document.getElementById("section").appendChild(commentSection);
+    }    
+}
+
+async function removePhrase(){
+    let response = await fetch('/delete-data',  {method:'post'});
+    getPhrase();
 }
   
-         
+    
