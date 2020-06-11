@@ -28,6 +28,23 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data") 
 public class DataServlet extends HttpServlet 
 { 
+<<<<<<< HEAD:portfolio/src/main/java/com/google/sps/servlets/DataServlet.java
+=======
+  private List<String> comments;
+
+  @Override
+  public void init() {
+    comments = new ArrayList<String>();
+  }
+
+  @Override
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String json = convertToJson(comments);
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
+  }
+
+>>>>>>> master:portfolio/src/main/java/com/google/DataServlet.java
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
