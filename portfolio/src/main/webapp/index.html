@@ -7,7 +7,7 @@
     <script src="script.js"></script>
   </head>
 
-  <body onload = "getPhrase()">  
+  <body>  
       <div id="mySidenav" class="topnav">
             <a href="#about-panel">About</a>
             <a href="#projects-panel">Projects</a>
@@ -116,13 +116,13 @@
        </div>
     </div>
 
-     <script src="https://www.gstatic.com/charts/loader.js"></script>
-        <script>
-        google.charts.load('current', {packages: ['corechart']});
-        google.charts.setOnLoadCallback(loadChart);
-        </script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(getPhrase);
+    </script>
 
-        <div id="activityPieChart"/>
+    <div id="commentBarChart"/>
     </div>
     </div>
   </body>
