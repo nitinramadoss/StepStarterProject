@@ -21,7 +21,7 @@ async function getPhrase(){
 
     commentHistory.innerHTML = '';
 
-    for(const element of list){
+    for (const element of list) {
         let commentSection = document.createElement("DIV");
         commentSection.setAttribute("id", "dynamic-history");
         let addName = document.createTextNode(element.name + ": ");
@@ -49,7 +49,7 @@ async function loadChart(){
 
     countComments(commentMap, list);
 
-    for(let [name, numComments] of commentMap){      
+    for (let [name, numComments] of commentMap) {      
         stats.addRows([
             [name, numComments],
         ]);      
@@ -61,13 +61,14 @@ async function loadChart(){
 }
 
 function countComments(map, list){  
-    for(const element of list){
+    for (const element of list) {
         let name = element.name;
 
-        if(map.has(name))
+        if (map.has(name)) {
             map.set(name, map.get(name) + 1); //add one to current value
-        else
+        } else {
             map.set(name, 1); //first occurence of that comment
+        }
     }
 }
   
