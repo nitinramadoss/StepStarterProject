@@ -7,16 +7,16 @@
     <script src="script.js"></script>
   </head>
 
-  <body onload = "getPhrase()">  
+  <body>  
       <div id="mySidenav" class="topnav">
             <a href="#about-panel">About</a>
             <a href="#projects-panel">Projects</a>
             <a href="#contacts-panel">Contact</a>
             <a href="#goals-panel">Goals</a>
-       </div>
+      </div>
             
     <div class="column">
-     <div id="content">
+      <div id="content">
       <div id="title">
       <h1>Nitin Ramadoss</h1>
       <h3>University of Florida BS in CS</h3>
@@ -26,10 +26,10 @@
     
     <div id="about-panel">
         <div id="about">
-        <h2> About Me </h2>
-        <hr id="line-one">
+        <h2> About Me</h2>
+        <hr id="line-one"></hr>
         <br>
-        <img src="images/profile.jpg" alt="Profile Image">
+        <img src="images/profile.jpg" alt="Profile Image"></img>
         <br>
         <p>
           I have been learning how to program for roughly 6 years now.
@@ -71,7 +71,7 @@
     </div>
     <div id="contacts-panel">
         <div id="contact">
-            <h2>Contact </h2>
+            <h2>Contact</h2>
                 <p>Instagram: nitin_r_01</p>
                 <p>Snapchat: nitinlikesfood</p>
                 <p>Discord: Nitin Ramadoss</p>
@@ -96,18 +96,18 @@
         <h2>Comments</h2>
              <form action="/data" method="POST">
              <label for="user-name">Name:</label>
-             <input type="text" name="user-name" size="50">
+             <input type="text" name="user-name" size="50"></input>
              <br>
              <br>
              <label for="user-comment">Leave a comment:</label>
-             <input type="text" name="user-comment" size="50">
+             <input type="text" name="user-comment" size="50"></input>
              <br>
              <br>
              <label for="max-comments">Show Comments: (between 1 and 5):</label>
-             <input type="number" id="max-comments" min="1" max="5" onchange="getPhrase()" value ="2">
+             <input type="number" id="max-comments" min="1" max="5" onchange="getPhrase()" value ="2"></input>
              <br>
              <br>     
-             <input type="submit" id="submit-button" />
+             <input type="submit" id="submit-button"></input>
              <br>
              <br>
              <button type="button" onclick="removePhrase()">Clear Comments</button>
@@ -118,12 +118,10 @@
 
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
-    google.charts.load('current', {packages: ['corechart']});
-    google.charts.setOnLoadCallback(loadChart);
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(getPhrase);
     </script>
 
-    <div id="activityPieChart"/>
-    </div>
-    </div>
+<div id="commentBarChart"></div>
   </body>
 </html>

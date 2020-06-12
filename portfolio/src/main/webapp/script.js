@@ -16,11 +16,12 @@ async function getPhrase(){
     let max = document.getElementById("max-comments").value;
     let response = await fetch('/load-data?numCommentsDisplay=' + max);
     let list = await response.json(); //list of entities from datastore
+    loadChart(); //load chart with entities from datastore
     let commentHistory = document.getElementById("section"); //UI for displaying comments
 
     commentHistory.innerHTML = '';
 
-    for(const element of list){
+    for (const element of list) {
         let commentSection = document.createElement("DIV");
         commentSection.setAttribute("id", "dynamic-history");
         let addName = document.createTextNode(element.name + ": ");
@@ -28,7 +29,8 @@ async function getPhrase(){
         commentSection.appendChild(addName);  
         commentSection.appendChild(addMessage);  
         document.getElementById("section").appendChild(commentSection);
-    }    
+    }  
+  
 }
 
 async function removePhrase(){
@@ -36,20 +38,39 @@ async function removePhrase(){
     getPhrase();
 }
 
-function loadChart(){
+async function loadChart(){
+    let commentMap = new Map();
+    let response = await fetch('/load-data');
+    let list = await response.json();
     let stats = new google.visualization.DataTable();
-      stats.addColumn('string', 'Action');
-      stats.addColumn('number', 'Percentage');
-      stats.addRows([
-        ['Programming', 0.65],
-        ['Biking', 0.10],
-        ['Gaming', 0.25]
-      ]);
+    
+    stats.addColumn('string', 'Name');
+    stats.addColumn('number', 'Total Comments');
 
-      // Instantiate and draw the chart.
-      var chart = new google.visualization.PieChart(document.getElementById('activityPieChart'));
-      chart.draw(stats, null);
+    countComments(commentMap, list);
+
+    for (let [name, numComments] of commentMap) {      
+        stats.addRows([
+            [name, numComments],
+        ]);      
+    }
+
+    // Instantiate and draw the chart.
+    var chart = new google.visualization.BarChart(document.getElementById('commentBarChart'));
+    chart.draw(stats, null);
+}
+
+function countComments(map, list){  
+    for (const element of list) {
+        let name = element.name;
+
+        if (map.has(name)) {
+            map.set(name, map.get(name) + 1); //add one to current value
+        } else {
+            map.set(name, 1); //first occurence of that comment
+        }
+    }
 }
   
-  
+
 
