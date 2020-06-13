@@ -13,17 +13,19 @@
 // limitations under the License.
 
 package com.google.sps.data;
-
-public class Comment //this object represents each comment posted to the website {Name: Comment}
+/*this object represents each comment posted to the website {Name: Comment} */
+public class Comment
 {
     private long id;
     private String name;
     private String message;
+    private double score;
 
-    public Comment(long id, String name, String message){
+    public Comment(long id, String name, String message, double score){
         this.id = id;
         this.name = name;
         this.message = message;
+        this.score = score;
     }
 
     public long getId(){
@@ -36,5 +38,9 @@ public class Comment //this object represents each comment posted to the website
 
     public String getMessage(){
         return message;
+    }
+
+    public double getScore(){
+        return score;
     }
 }

@@ -16,6 +16,9 @@ package com.google.sps.servlets;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.cloud.language.v1.Document;
+import com.google.cloud.language.v1.LanguageServiceClient;
+import com.google.cloud.language.v1.Sentiment;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,14 +38,26 @@ public class DataServlet extends HttpServlet
     String message = request.getParameter("user-comment");
     long timestamp = System.currentTimeMillis();
 
-    if(name.length() != 0 && message.length() != 0){
+    if (name.length() != 0 && message.length() != 0) {
         Entity taskEntity = new Entity("Comment");
+
         taskEntity.setProperty("name", name);
         taskEntity.setProperty("message", message);
+        taskEntity.setProperty("score", getSentimentScore(message));
         taskEntity.setProperty("timestamp", timestamp);
         datastore.put(taskEntity);
     }
 
     response.sendRedirect("/index.html#comments-panel");
+  }
+
+  public double getSentimentScore(String message) throws IOException {
+    Document doc = Document.newBuilder().setContent(message).setType(Document.Type.PLAIN_TEXT).build();
+    LanguageServiceClient languageService = LanguageServiceClient.create();
+    Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
+    double score = sentiment.getScore();
+    languageService.close();
+
+    return score;
   }
 }

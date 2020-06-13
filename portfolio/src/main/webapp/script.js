@@ -26,8 +26,10 @@ async function getPhrase(){
         commentSection.setAttribute("id", "dynamic-history");
         let addName = document.createTextNode(element.name + ": ");
         let addMessage = document.createTextNode(element.message);
+        let addScore = document.createTextNode("(" + element.score + ")");
         commentSection.appendChild(addName);  
         commentSection.appendChild(addMessage);  
+        commentSection.appendChild(addScore);
         document.getElementById("section").appendChild(commentSection);
     }  
   
