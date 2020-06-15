@@ -91,7 +91,7 @@
        </div>
     </div>
 
-     <div id="comments-panel">
+    <div id="comments-panel">
        <div id="comments">
         <h2>Comments</h2>
              <form action="/data" method="POST">
@@ -114,14 +114,15 @@
              </form>
         <ul id="section"></ul>
        </div>
+
+       <script src="https://www.gstatic.com/charts/loader.js"></script>
+         <script>
+            google.charts.load('current', {packages: ['corechart']});
+            google.charts.setOnLoadCallback(getPhrase);
+         </script>
+         <div id="commentBarChart"></div>
+         <div id="sentimentPieChart"></div>
+         
     </div>
-
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script>
-        google.charts.load('current', {packages: ['corechart']});
-        google.charts.setOnLoadCallback(getPhrase);
-    </script>
-
-    <div id="commentBarChart"></div>
   </body>
 </html>
