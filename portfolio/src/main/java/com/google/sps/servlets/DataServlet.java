@@ -26,11 +26,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
  
 /** Servlet that adds comments to datastore */
 @WebServlet("/data") 
 public class DataServlet extends HttpServlet 
 { 
+  public void init() throws ServletException {
+    try {
+        languageService = LanguageServiceClient.create();
+    } catch (Exception e) {
+        throw new ServletException("I/O exception thrown", e);
+    }
+  }
+  
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
@@ -53,7 +62,6 @@ public class DataServlet extends HttpServlet
 
   public double getSentimentScore(String message) throws IOException {
     Document doc = Document.newBuilder().setContent(message).setType(Document.Type.PLAIN_TEXT).build();
-    LanguageServiceClient languageService = LanguageServiceClient.create();
     Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
     double score = sentiment.getScore();
     languageService.close();
