@@ -23,6 +23,7 @@ import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.gson.Gson;
 import com.google.sps.data.Comment;
 import java.io.IOException;
+import java.lang.ClassCastException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.annotation.WebServlet;
@@ -39,14 +40,22 @@ public class LoadDataServlet extends HttpServlet
     List<Comment> comments = new ArrayList<Comment>();
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    FetchOptions fetchOptions = FetchOptions.Builder.withDefaults();
     String maxEntities = request.getParameter("numCommentsDisplay");
+    
+    if (maxEntities == null) {
+        maxEntities = Integer.toString(datastore.prepare(query).countEntities(fetchOptions));
+    }
+
     List<Entity> results = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(Integer.parseInt(maxEntities)));
 
     for (Entity e : results) {
         long id = (long) e.getKey().getId();
         String name = (String) e.getProperty("name");
         String message = (String) e.getProperty("message");
-        comments.add(new Comment(id, name, message));
+        double score = (Double) e.getProperty("score");
+        
+        comments.add(new Comment(id, name, message, score));
     }
 
     Gson gson = new Gson();

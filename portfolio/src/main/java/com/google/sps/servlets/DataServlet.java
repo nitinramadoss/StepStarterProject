@@ -16,6 +16,9 @@ package com.google.sps.servlets;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.cloud.language.v1.Document;
+import com.google.cloud.language.v1.LanguageServiceClient;
+import com.google.cloud.language.v1.Sentiment;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,28 +26,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
  
 /** Servlet that adds comments to datastore */
 @WebServlet("/data") 
 public class DataServlet extends HttpServlet 
 { 
-<<<<<<< HEAD:portfolio/src/main/java/com/google/sps/servlets/DataServlet.java
-=======
-  private List<String> comments;
-
-  @Override
-  public void init() {
-    comments = new ArrayList<String>();
+  private LanguageServiceClient languageService;
+  
+  public void init() throws ServletException {
+    try {
+        languageService = LanguageServiceClient.create();
+    } catch (Exception e) {
+        throw new ServletException("Servlet exception thrown", e);
+    }
   }
 
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String json = convertToJson(comments);
-    response.setContentType("application/json;");
-    response.getWriter().println(json);
-  }
-
->>>>>>> master:portfolio/src/main/java/com/google/DataServlet.java
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
@@ -52,14 +49,28 @@ public class DataServlet extends HttpServlet
     String message = request.getParameter("user-comment");
     long timestamp = System.currentTimeMillis();
 
-    if(name.length() != 0 && message.length() != 0){
+    if (name.length() != 0 && message.length() != 0) {
         Entity taskEntity = new Entity("Comment");
+
         taskEntity.setProperty("name", name);
         taskEntity.setProperty("message", message);
+        taskEntity.setProperty("score", getSentimentScore(message));
         taskEntity.setProperty("timestamp", timestamp);
         datastore.put(taskEntity);
     }
 
     response.sendRedirect("/index.html#comments-panel");
+  }
+
+  public double getSentimentScore(String message) throws IOException {
+    Document doc = Document.newBuilder().setContent(message).setType(Document.Type.PLAIN_TEXT).build();
+    Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
+    double score = sentiment.getScore();
+
+    return score;
+  }
+  
+  public void destroy(){
+    languageService.close();
   }
 }
