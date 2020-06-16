@@ -32,11 +32,13 @@ import javax.servlet.ServletException;
 @WebServlet("/data") 
 public class DataServlet extends HttpServlet 
 { 
+  private LanguageServiceClient languageService;
+  
   public void init() throws ServletException {
     try {
         languageService = LanguageServiceClient.create();
     } catch (Exception e) {
-        throw new ServletException("I/O exception thrown", e);
+        throw new ServletException("Servlet exception thrown", e);
     }
   }
   
@@ -64,8 +66,11 @@ public class DataServlet extends HttpServlet
     Document doc = Document.newBuilder().setContent(message).setType(Document.Type.PLAIN_TEXT).build();
     Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
     double score = sentiment.getScore();
-    languageService.close();
 
     return score;
+  }
+  
+  public void destroy(){
+    languageService.close();
   }
 }
