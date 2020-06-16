@@ -41,7 +41,7 @@ public class DataServlet extends HttpServlet
         throw new ServletException("Servlet exception thrown", e);
     }
   }
-  
+
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
