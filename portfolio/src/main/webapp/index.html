@@ -9,19 +9,20 @@
 
   <body>  
       <div id="mySidenav" class="topnav">
-            <a href="#about-panel">About</a>
-            <a href="#projects-panel">Projects</a>
-            <a href="#contacts-panel">Contact</a>
-            <a href="#goals-panel">Goals</a>
+        <a href="#about-panel">About</a>
+        <a href="#projects-panel">Projects</a>
+        <a href="#contacts-panel">Contact</a>
+        <a href="#goals-panel">Goals</a>
       </div>
             
     <div class="column">
-      <div id="content">
-      <div id="title">
-      <h1>Nitin Ramadoss</h1>
-      <h3>University of Florida BS in CS</h3>
-      <h3>Google STEP Intern</h3>
-      </div>
+
+    <div id="content">
+        <div id="title">
+        <h1>Nitin Ramadoss</h1>
+        <h3>University of Florida BS in CS</h3>
+        <h3>Google STEP Intern</h3>
+        </div>
     </div>
     
     <div id="about-panel">
@@ -58,30 +59,30 @@
     </div>
 
     <div id="projects-panel">
-         <div id="projects">
+        <div id="projects">
         <h2>Projects:</h2>
-        <ul>
+         <ul>
             <li>Club king Apps mobile app - connects members of my club</li>
             <li>PictoPill application - integrates ArCore and FireBase Vision </li>
             <li>Tap Media - share social media contacts by tapping phones</li>
             <li>FBLA Quiz Time app available on the Play Store</li>
             <li>First app I ever built: Pocket Popular available on Play Store</li>
-        </ul>
+         </ul>
         </div>
     </div>
     <div id="contacts-panel">
         <div id="contact">
-            <h2>Contact</h2>
-                <p>Instagram: nitin_r_01</p>
-                <p>Snapchat: nitinlikesfood</p>
-                <p>Discord: Nitin Ramadoss</p>
-                <p>Email: nitinramadoss@gmail.com</p>
+         <h2>Contact</h2>
+            <p>Instagram: nitin_r_01</p>
+            <p>Snapchat: nitinlikesfood</p>
+            <p>Discord: Nitin Ramadoss</p>
+            <p>Email: nitinramadoss@gmail.com</p>
         </div>
     </div>
 
     <div id="goals-panel">
        <div id="goals">
-        <h2>Goals </h2>
+        <h2>Goals</h2>
         <ul>
             <li>Lead emerging technologies</li>
             <li>Learn various fields in computer science such as AI/ML,Computer Vision, Networking, and Data science</li>
@@ -94,35 +95,34 @@
     <div id="comments-panel">
        <div id="comments">
         <h2>Comments</h2>
-             <form action="/data" method="POST">
-             <label for="user-name">Name:</label>
-             <input type="text" name="user-name" size="50"></input>
-             <br>
-             <br>
-             <label for="user-comment">Leave a comment:</label>
-             <input type="text" name="user-comment" size="50"></input>
-             <br>
-             <br>
-             <label for="max-comments">Show Comments: (between 1 and 5):</label>
-             <input type="number" id="max-comments" min="1" max="5" onchange="getPhrase()" value ="2"></input>
-             <br>
-             <br>     
-             <input type="submit" id="submit-button"></input>
-             <br>
-             <br>
-             <button type="button" onclick="removePhrase()">Clear Comments</button>
-             </form>
+            <form action="/data" method="POST">
+            <label for="user-name">Name:</label>
+            <input type="text" name="user-name" size="50"></input>
+            <br>
+            <br>
+            <label for="user-comment">Leave a comment:</label>
+            <input type="text" name="user-comment" size="50"></input>
+            <br>
+            <br>
+            <label for="max-comments">Show Comments: (between 1 and 5):</label>
+            <input type="number" id="max-comments" min="1" max="5" onchange="getPhrase()" value ="2"></input>
+            <br>
+            <br>     
+            <input type="submit" id="submit-button"></input>
+            <br>
+            <br>
+            <button type="button" onclick="removePhrase()">Clear Comments</button>
+            </form>
         <ul id="section"></ul>
        </div>
 
        <script src="https://www.gstatic.com/charts/loader.js"></script>
-         <script>
-            google.charts.load('current', {packages: ['corechart']});
-            google.charts.setOnLoadCallback(getPhrase);
-         </script>
-         <div id="commentBarChart"></div>
-         <div id="sentimentPieChart"></div>
-         
+       <script>
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(getPhrase);
+       </script>
+       <div id="commentBarChart"></div>
+       <div id="sentimentPieChart"></div>        
     </div>
   </body>
 </html>
