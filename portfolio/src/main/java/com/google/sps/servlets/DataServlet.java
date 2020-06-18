@@ -40,7 +40,6 @@ public class DataServlet extends HttpServlet
     } catch (IOException e) {
         System.out.println(e);
     }
-
   }
 
   @Override
@@ -68,8 +67,11 @@ public class DataServlet extends HttpServlet
     Document doc = Document.newBuilder().setContent(message).setType(Document.Type.PLAIN_TEXT).build();
     Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
     double score = sentiment.getScore();
-    languageService.close();
 
     return score;
+  }
+  
+  public void destroy(){
+    languageService.close();
   }
 }

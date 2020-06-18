@@ -13,7 +13,7 @@
 // limitations under the License.
 
 package com.google.sps.data;
-/*this object represents each comment posted to the website {Name: Comment} */
+/* This object represents each comment posted to the website {Name: Comment} */
 public class Comment
 {
     private long id;
