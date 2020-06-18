@@ -37,8 +37,8 @@ public class DataServlet extends HttpServlet
   public void init() throws ServletException {
     try {
         languageService = LanguageServiceClient.create();
-    } catch (Exception e) {
-        throw new ServletException("I/O exception thrown", e);
+    } catch (IOException e) {
+        System.out.println(e);
     }
 
   }
