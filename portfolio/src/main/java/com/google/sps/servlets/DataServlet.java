@@ -33,12 +33,12 @@ import javax.servlet.ServletException;
 public class DataServlet extends HttpServlet 
 { 
   private LanguageServiceClient languageService;
-  
+
   public void init() throws ServletException {
     try {
         languageService = LanguageServiceClient.create();
-    } catch (Exception e) {
-        throw new ServletException("Servlet exception thrown", e);
+    } catch (IOException e) {
+        System.out.println(e);
     }
   }
 
@@ -51,10 +51,11 @@ public class DataServlet extends HttpServlet
 
     if (name.length() != 0 && message.length() != 0) {
         Entity taskEntity = new Entity("Comment");
+        double score = getSentimentScore(message);
 
         taskEntity.setProperty("name", name);
         taskEntity.setProperty("message", message);
-        taskEntity.setProperty("score", getSentimentScore(message));
+        taskEntity.setProperty("score", score);
         taskEntity.setProperty("timestamp", timestamp);
         datastore.put(taskEntity);
     }
